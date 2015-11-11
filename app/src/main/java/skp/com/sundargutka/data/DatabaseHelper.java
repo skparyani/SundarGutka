@@ -1,5 +1,6 @@
 package skp.com.sundargutka.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,22 +25,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         final String SQL_CREATE_CHAPTER_TABLE = "CREATE TABLE " + ChapterEntry.TABLE_NAME + " (" +
-                ChapterEntry._ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                ChapterEntry.COLUMN_CHAPTER_NAME + " TEXT NOT NULL, " +
-                ChapterEntry.COLUMN_TOTAL_SUB_CHAPTERS + " INTEGER NOT NULL);";
+                ChapterEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ChapterEntry.COLUMN_CHAPTER_NAME + " TEXT, " +
+                ChapterEntry.COLUMN_TOTAL_SUB_CHAPTERS + " INTEGER);";
 
 
-        final String SQLI_CREATE_DETAIL_TABLE = "CREATE TABLE " + DetailEntry.TABLE_NAME + " (" +
+        final String SQL_CREATE_DETAIL_TABLE = "CREATE TABLE " + DetailEntry.TABLE_NAME + " (" +
                 DetailEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                DetailEntry.COLUMN_CH_KEY + " INTEGER NOT NULL, " +
-                DetailEntry.COLUMN_SCH_NAME + " TEXT NOT NULL, " +
-                DetailEntry.COLUMN_SCH_TEXT + "TEXT NOT NULL, " +
+                DetailEntry.COLUMN_CH_KEY + " INTEGER, " +
+                DetailEntry.COLUMN_SCH_NAME + " TEXT, " +
+                DetailEntry.COLUMN_SCH_TEXT + "TEXT, " +
                 " FOREIGN KEY ( " + DetailEntry.COLUMN_CH_KEY + ") REFERENCES " +
                 ChapterEntry.TABLE_NAME + " (" + ChapterEntry._ID + ")" +
                 ");";
 
         db.execSQL(SQL_CREATE_CHAPTER_TABLE);
-        db.execSQL(SQLI_CREATE_DETAIL_TABLE);
+        db.execSQL(SQL_CREATE_DETAIL_TABLE);
     }
 
     @Override
@@ -49,5 +50,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + DetailEntry.TABLE_NAME);
 
         onCreate(db);
+    }
+
+    public boolean insertChapter(String chapterName, int totalChapters)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ChapterEntry.COLUMN_CHAPTER_NAME, chapterName);
+        contentValues.put(ChapterEntry.COLUMN_TOTAL_SUB_CHAPTERS, totalChapters);
+        db.insert(ChapterEntry.TABLE_NAME, null, contentValues);
+        return true;
+    }
+
+    public boolean insertDetail(int position, String subChapterName, String subChapterText)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DetailEntry.COLUMN_CH_KEY, position);
+        contentValues.put(DetailEntry.COLUMN_SCH_NAME, subChapterName);
+        contentValues.put(DetailEntry.COLUMN_SCH_TEXT, subChapterText);
+        if(db!=null)
+            db.close();
+        return true;
     }
 }
