@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import skp.com.sundargutka.data.DatabaseContract.ChapterEntry;
 import skp.com.sundargutka.data.DatabaseContract.DetailEntry;
@@ -34,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 DetailEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DetailEntry.COLUMN_CH_KEY + " INTEGER, " +
                 DetailEntry.COLUMN_SCH_NAME + " TEXT, " +
-                DetailEntry.COLUMN_SCH_TEXT + "TEXT, " +
+                DetailEntry.COLUMN_SCH_TEXT + " TEXT, " +
                 " FOREIGN KEY ( " + DetailEntry.COLUMN_CH_KEY + ") REFERENCES " +
                 ChapterEntry.TABLE_NAME + " (" + ChapterEntry._ID + ")" +
                 ");";
@@ -62,15 +63,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insertDetail(int position, String subChapterName, String subChapterText)
+    public boolean insertDetail(String subChapterName, String subChapterText, int position)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(DetailEntry.COLUMN_CH_KEY, position);
         contentValues.put(DetailEntry.COLUMN_SCH_NAME, subChapterName);
         contentValues.put(DetailEntry.COLUMN_SCH_TEXT, subChapterText);
-        if(db!=null)
-            db.close();
+        long id = db.insertOrThrow(DetailEntry.TABLE_NAME, null, contentValues);
+//        long id = db.insert(DetailEntry.TABLE_NAME, null, contentValues);
+        Log.d("sateesh","returned id is "+id);
         return true;
     }
 }

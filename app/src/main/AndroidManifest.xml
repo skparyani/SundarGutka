@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".MessageActivity"/>
         <activity android:name=".PathList"/>
+        <activity android:name=".DetailActivity"/>
     </application>
 
 </manifest>

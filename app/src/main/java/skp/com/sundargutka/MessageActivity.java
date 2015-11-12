@@ -27,9 +27,12 @@ public class MessageActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT > 16)
             mTextView.setTextDirection(View.TEXT_DIRECTION_RTL);
+        else
+        {
+            //TODO: Set Right To Left Text Direction for SDK Version <=16
+        }
 
-
-        mTextView.setText(getString(R.string.message_0));
+        mTextView.setText(getMessage());
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/urdu.ttf");
         mLauchList.setTypeface(tf, Typeface.BOLD);
@@ -42,5 +45,24 @@ public class MessageActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    private String getMessage()
+    {
+        String message = getString(R.string.m1);
+        message += getString(R.string.m2);
+        message += getString(R.string.m3);
+        message += getString(R.string.m4);
+        message += getString(R.string.m5);
+        message += getString(R.string.m6);
+        message += getString(R.string.m7);
+        message += getString(R.string.m8);
+        message += getString(R.string.m9);
+        message += getString(R.string.m10);
+        message += getString(R.string.m11);
+        message += getString(R.string.m12);
+
+        return message;
     }
 }

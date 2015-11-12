@@ -3,17 +3,20 @@
 
     <string name="ok_button">ٹھیک ہے</string>
 
-    <string name="message_0">ضروری  بینتی \n کِرپا  کر کے  اَپنا  سِر(متھا)  ڈھک  لین۔اور  جوتے  اُتار  کے  باٹی  پڑھین۔\nنوٹ\n بُھلن  اندر  سبھ  کو  اَبُھل  گُرو  کرتار (داس  تو  ہے  ہی  بھولنہار) جو  سَرن  آوے  تِس  کنٹھو  لاوے۔ کے  واک  انوسار  گرو  پیارو  جس  کو  بھی  گرو  کی  بکھشش سے  کوئی غلطی  نظر  آئے  تو ہمین gururakha99@gmail.com پے  رابط کر کے  بتائین۔   \n\n واھگرو  جی  کا  خالصہ ,  واھگرو  جی  کی  فتح\n</string>
+    <!--Message-->
+    <string name="m1">ضروری  بینتی\n</string>
+    <string name="m2">کِرپا  کر کے  اَپنا  سِر(متھا)  ڈھک  لین۔\n</string>
+    <string name="m3">اور  جوتے  اُتار  کے  باٹی  پڑھین۔\n</string>
+    <string name="m4">نوٹ\n</string>
+    <string name="m5">بُھلن  اندر  سبھ  کو  اَبُھل  گُرو  کرتار\n</string>
+    <string name="m6">داس  تو  ہے  ہی  بھولنہار\n</string>
+    <string name="m7">جو سَرن آوَے تِس کنٹھو لاوَئے\n</string>
+    <string name="m8"> کے واک انوسار گرو پیارو جِس کو بھی گرو کی \n</string>
+    <string name="m9">بکھشش سے کوئی غلطی  نظر آئے  تو ہمین اس  \n</string>
+    <string name="m10">gururakha99@gmail.com\n</string>
+    <string name="m11">پے  بتائین۔\n</string>
+    <string name="m12">واھگرو جی کاخالصہ  ٬واھگرو جی کی فتح</string>
 
-    <string name="message_1"></string>
-
-    <string name="message_2_0"></string>
-
-    <string name="message_2"></string>
-
-    <string name="message_3"></string>
-
-    <string name="message_4">
-</string>
+    <string name="m">اِکٰ اونکار ستِ  نامُ کرتا  پُرکُھ نِربھءُ  نِروَیرُ اکال مُورتِ اجُو نِی  سَیبھن گُر  پرساد : : جپُ : آد ِسچُ: جُگادِ  سچُ : ہے َ  بِھی  سچُ  : نانکَ  ہوسِی  بِھی سچُ :۱:</string>
 
 </resources>
